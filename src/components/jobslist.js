@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Job from "./job";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const JobsList = () => {
   const [offers] = useState([
@@ -32,31 +32,36 @@ const JobsList = () => {
       views: 3333,
     },
   ]);
+  const intl = useIntl();
+  const headerStyle = {
+    backgroundColor: intl.locale === 'es' ? 'light' : 'dark',
+  };
+
 
   return (
     <div>
       <table className="table">
-        <thead className="thead-dark">
+        <thead style={headerStyle} className="thead-dark">
           <tr>
             <th scope="col">#</th>
             <th scope="col">
               <FormattedMessage id="Position" />
-              </th>
+            </th>
             <th scope="col">
               <FormattedMessage id="Company" />
-              </th>
+            </th>
             <th scope="col">
-              <FormattedMessage id="Salary"/>
-              </th>
+              <FormattedMessage id="Salary" />
+            </th>
             <th scope="col">
               <FormattedMessage id="City" />
-              </th>
+            </th>
             <th scope="col">
               <FormattedMessage id="PublicationDate" />
-              </th>
+            </th>
             <th scope="col">
               <FormattedMessage id="Views" />
-              </th>
+            </th>
           </tr>
         </thead>
         <tbody>
